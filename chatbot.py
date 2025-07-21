@@ -9,6 +9,11 @@ from nltk.stem import WordNetLemmatizer
 
 from keras.models import load_model
 
+nltk.download('punkt_tab')
+nltk.download('punkt')
+nltk.download('wordnet')
+nltk.download('omw-1.4')
+
 lemmatizer = WordNetLemmatizer()
 with open('intents.json', encoding='utf-8') as file:
     intents = json.load(file)
