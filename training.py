@@ -1,27 +1,27 @@
 # Proyecto final PLN   - 19/7/2025
 # Fecha de inicio del proyecto - 18/7/2025
-# Segundo intento, el intento uno fue desechado debido a que no habia
-# presupuesto para obtener un modelo de open AI y hacer las cosas bonito
-
-# Hubo que instalar las librerias con un pip install en la terminal de: nltk,
-# numpy, tensorflow y keras
 import random
 import json
 import pickle
 import numpy as np
-
 import nltk
+
+from keras.layers import Dense, Dropout
+from keras.models import Sequential
+from keras.optimizers import SGD
 from nltk.stem import WordNetLemmatizer
 
-from keras.models import Sequential
-from keras.layers import Dense, Dropout
-from keras.optimizers import SGD
-
+# Inicializamos un lematizador para convertir palabras a su forma base
+# Ejemplo: Bailando -> Bailar
 lemmatizer = WordNetLemmatizer()
 
-# Estas son las intenciones osea el jason
+# Leemos el archivo recibiendo un string que luego convertimos a un objeto json
 intents = json.loads(open('intents.json').read())
 
+# Descargamos los paquetes de nltk que usaremos
+# punk_tab & punk: tokenizador de oraciones
+# wordnet: Paquete relacionado a los bancos de palabras
+# omw-1.4: Banco de palabras multilenguajes
 nltk.download('punkt_tab')
 nltk.download('punkt')
 nltk.download('wordnet')
@@ -32,71 +32,92 @@ classes = []
 documents = []
 ignore_letters = ['?', '!', '.', ',', '¿', '-', '_']
 
-# El bucle que maneja las intenciones y las tokeniza
+# Por cada intencion se revisan patrones y realizamos las siguientes acciones
 for intent in intents['intents']:
     for pattern in intent['patterns']:
+        # Tokenizamos el patron y lo guardamos en la lista de palabras
         word_list = nltk.word_tokenize(pattern)
         words.extend(word_list)
+
+        # Guardamos en una tupla el patron tokenizado y la tag de la intencion
         documents.append((word_list, intent["tag"]))
+        # Si la tag no esta en las clases entonces se guardara
         if intent["tag"] not in classes:
             classes.append(intent["tag"])
 
+# Lematizamos la oracion e ignoramos ciertos simbolos irrelevantes
 words = [
     lemmatizer.lemmatize(word)
     for word in words
     if word not in ignore_letters
 ]
+
+# Se pone la lista de palabras en un set para eliminar las repetidas
+# para despues ordenarlas alfabeticamente
 words = sorted(set(words))
 
+# Serializamos las palabras y clases como archivos
+# para despues leerlos en otro archivo
 pickle.dump(words, open('words.pkl', 'wb'))
 pickle.dump(classes, open('classes.pkl', 'wb'))
 
 training = []
-output_empty = [0]*len(classes)
+# Llenamos un arreglo con ceros del mismo tamaño de las clases
+# Esta sera clonada en el siguiente bucle parautilizarla como plantilla de BoW
+output_empty = [0] * len(classes)
+
 for document in documents:
     bag = []
     word_patterns = document[0]
-    word_patterns = \
-        [lemmatizer.lemmatize(word.lower()) for word in word_patterns]
+    # Lematizamos los patrones y lo convertimos a minusculas
+    word_patterns = [
+        lemmatizer.lemmatize(word.lower())
+        for word in word_patterns
+    ]
 
+    # Guardamos en el BoW si la palabra está presente 1, si no 0
     for word in words:
         bag.append(1) if word in word_patterns else bag.append(0)
 
-    outpout_row = list(output_empty)
-    outpout_row[classes.index(document[1])] = 1
-    training.append([bag, outpout_row])
+    # Definimos la fila de salida
+    output_row = list(output_empty)
+
+    # Ponemos 1 en la posición de la clase correcta
+    output_row[classes.index(document[1])] = 1
+    # Guardamos en los datos de entrenamiento el BoW
+    training.append([bag, output_row])
+
+# Barajamos los datos de entrenamiento para evitar el sesgo
 random.shuffle(training)
 training = np.array(training, dtype=object)
-
-# Esto no parece tener fin, el nltk no funciona, los imports no importaban
-# el try no intenta, las variables no varian, los bucles no se repiten
-# Ya todo se soluciono *Pulgar arriba *
 
 train_x = list(training[:, 0])
 train_y = list(training[:, 1])
 
-# ni me pregunten que hice aqui abajo porque ni yo se, solo entendi algo de
-# las neuronas, o bueno aqui se crea la red neuronal es una buena definicion
+# Creamos la red neuronal
 model = Sequential()
+# Se agrega una neurona con la función ReLU para relaciones no lineales.
 model.add(Dense(256, input_shape=(len(train_x[0]),), activation='relu'))
+# Se agrega una neurona para evitar overfitting
 model.add(Dropout(0.5))
 model.add(Dense(128, activation='relu'))
 model.add(Dropout(0.5))
+# Capa de salida de la red neuronal
+# Usa softmax para obtener una probabilidad por cada clase
 model.add(Dense(len(train_y[0]), activation='softmax'))
 
-# Aqui abajo entreno al modelo, pero no entreno lo fisico, la red neuronal a
-# alcanzado un estado de iluminacion que se dio cuenta que, carente de cuerpo
-# fisico decidio entrnar lo mas poderoso
-# La mente
+# Se aplica un algoritmo de optimizacion llamado Stochastic Gradient Descent
 sgd = SGD(learning_rate=0.001, decay=1e-6, momentum=0.9, nesterov=True)
 
-# Aqui me comi la e en "crossentropy" y estuve 10 minutos buscando el error
-# anoten eso para el pdf
+# Compilamos el modelo usando categorical_crossentropy que produce un one-hot
+# array que contiene la coincidencia probable para cada categoría,
 model.compile(
     loss='categorical_crossentropy',
     optimizer=sgd,
     metrics=['accuracy']
 )
+
+# Entrenamos el modelo
 train_process = model.fit(
     np.array(train_x),
     np.array(train_y),
@@ -105,9 +126,5 @@ train_process = model.fit(
     verbose=1
 )
 
-# Aqui guardo el modelo para usarlo en el otro archivo
-# Primero use .h5 pero la ejecucion me dijo muy amablemente:
-#
-# ADVERTENCIA: ESE TIPO DE ARCHIVO ES VIEJO UN VEGESTORIO
-# CAMBIATE A KERAS EL NUEVO, FUERA LO VIEJO ENTRA LO NUEVO
+# Guardamos el modelo para posteriormente usarlo en otra ejecucion
 model.save("chatbot_UG.keras")

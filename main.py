@@ -22,6 +22,7 @@ with st.expander("⭐ **Preguntas mas frecuentes**"):
     st.write("- ¿Cuantas faltas se permiten en nivelacion?")
 
 # Inicializamos un array para guarda en memoria los mensajes
+# junto a un mensaje inicial
 if "messages" not in st.session_state:
     st.session_state.messages = [
         {
