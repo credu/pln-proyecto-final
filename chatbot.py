@@ -60,11 +60,12 @@ def get_response(tag, intents_json):
             break
     return result
 
-while True:
-    message = input("")
-    tag = predict_class(message)
-    if tag:
-        res = get_response(tag, intents)
-    else:
-        res = "Lo siento, no entendí tu pregunta. ¿Puedes reformularla?"
-    print(res)
+# Ejemplo de uso
+# while True:
+#     message = input("")
+#     tag = predict_class(message)
+#     if tag:
+#         res = get_response(tag, intents)
+#     else:
+#         res = "Lo siento, no entendí tu pregunta. ¿Puedes reformularla?"
+#     print(res)
