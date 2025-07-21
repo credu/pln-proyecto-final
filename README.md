@@ -5,7 +5,17 @@ Versión de Python <= 3.11 (La instalación de TensorFlow puede fallar en versio
 [Post al respecto en Reddit](https://www.reddit.com/r/learnpython/comments/1gzoxus/wait_the_f_up_tensorflow_is_not_supported_for/)
 
 ## Instalación
-Instalamos los paquetes requeridos
+Clonar el repositorio
+```bash
+git clone https://github.com/credu/pln-proyecto-final.git
+```
+
+Acceder a la carpeta del codigo fuente
+```bash
+cd pln-proyecto-final
+```
+
+Instalar los paquetes requeridos
 ```bash
 pip install -r requirements.txt
 ```
