@@ -1,0 +1,195 @@
+{
+  "intents": [
+    {
+      "tag": "saludo",
+      "patterns": ["hola", "qué tal", "cómo estás", "buenos dias", "saludos", "hey", "buenas"],
+      "responses": ["¡Hola!", "Saludos, ¿en qué puedo ayudarte?", "¡Hola! ¿Cómo te va?"]
+    },
+    {
+      "tag": "despedida",
+      "patterns": ["adios", "nos vemos", "hasta luego", "chao", "bye"],
+      "responses": ["Hasta luego", "Nos vemos pronto", "Adiós, que tengas buen día"]
+    },
+    {
+      "tag": "agradecimiento",
+      "patterns": ["gracias", "muchas gracias", "te agradezco", "mil gracias"],
+      "responses": ["De nada", "Con gusto", "Para eso estoy"]
+    },
+    {
+      "tag": "nombre",
+      "patterns": ["como te llamas", "quien eres", "tu nombre", "cual es tu nombre"],
+      "responses": ["Soy un chatbot llamado chatbot UG", "Me llamo Chatbot UG"]
+    },
+    {
+      "tag": "ayuda",
+      "patterns": ["necesito ayuda", "puedes ayudarme", "tengo una pregunta", "ayudame"],
+      "responses": ["Claro, dime en qué necesitas ayuda", "Estoy aquí para ayudarte"]
+    },
+    {
+      "tag": "broma",
+      "patterns": ["cuentame un chiste", "hazme reir", "dime algo gracioso"],
+      "responses": ["¿Qué hace una abeja en el gimnasio? ¡Zum-ba!", "¿Por qué el libro de matemáticas estaba triste? ¡Porque tenía demasiados problemas!"]
+    },
+    {
+      "tag": "no_entendido",
+      "patterns": [],
+      "responses": ["Lo siento, no entendí eso. ¿Podrías reformularlo?"]
+    },
+    {
+      "tag": "preguntar_requisitos_admision",
+      "patterns": [
+        "Cuales son los requisitos para postular a la UG?",
+        "Que necesito para la admision?",
+        "Requisitos para inscribirme en la Universidad de Guayaquil",
+        "Como postulo a la UG?",
+        "Que piden para ingresar a la UG?"
+      ],
+      "responses": [
+        "Debes tener titulo de bachiller registrado en SENESCYT y registrarte en el portal https://registrounicoedusup.gob.ec/. Luego, crea tu cuenta en https://admision.ug.edu.ec segun tu numero de cedula y descarga el temario correspondiente. Mas info en https://admision.ug.edu.ec/admision/"
+      ]
+    },
+    {
+      "tag": "crear_cuenta_admision",
+      "patterns": [
+        "Como creo mi cuenta para la admision?",
+        "No puedo registrarme en la pagina de la UG",
+        "Crear cuenta en la Universidad de Guayaquil",
+        "Donde me registro para postular?",
+        "Donde encuentro la opcion para crear cuenta?"
+      ],
+      "responses": [
+        "Ingresa a https://admision.ug.edu.ec/ y haz clic en 'Crear cuenta'. El acceso depende del ultimo digito de tu cedula. Recuerda tener tu correo electronico y numero de cedula listos."
+      ]
+    },
+    {
+      "tag": "consultar_fechas_nivelacion",
+      "patterns": [
+        "Cuando comienza el curso de nivelacion?",
+        "Fechas del curso de nivelacion 2025",
+        "Que dia inicia nivelacion?",
+        "Inicio de clases nivelacion UG",
+        "Cual es la fecha de inicio del curso?"
+      ],
+      "responses": [
+        "El curso de nivelacion 2025 inicia el 12 de agosto. Consulta el calendario en https://admision.ug.edu.ec/nivelacion25/"
+      ]
+    },
+    {
+      "tag": "consultar_duracion_nivelacion",
+      "patterns": [
+        "Cuanto dura la nivelacion?",
+        "Duracion del curso de nivelacion",
+        "Cuantas semanas dura nivelacion UG?",
+        "Tiempo estimado del curso de nivelacion",
+        "Cuando termina la nivelacion?"
+      ],
+      "responses": [
+        "La nivelacion tiene una duracion de 18 semanas, incluyendo clases presenciales, practicas y trabajo autonomo."
+      ]
+    },
+    {
+      "tag": "consultar_requisitos_matricula",
+      "patterns": [
+        "Que documentos necesito para matricularme en nivelacion?",
+        "Requisitos de matricula nivelacion",
+        "Donde me matriculo en nivelacion UG?",
+        "Documentos necesarios para matriculacion",
+        "Que papeles tengo que subir al SIUG?"
+      ],
+      "responses": [
+        "La matricula se realiza en linea por el SIUG. Necesitas subir: foto tipo carne, cedula, titulo de bachiller, certificado de votacion, curriculum, entre otros. Verifica los documentos en https://admision.ug.edu.ec/nivelacion/"
+      ]
+    },
+    {
+      "tag": "consultar_costos_nivelacion",
+      "patterns": [
+        "La nivelacion es gratis?",
+        "Cuanto cuesta el curso de nivelacion?",
+        "Costo de la nivelacion en UG",
+        "Debo pagar algo por nivelacion?",
+        "Precio por materia de nivelacion"
+      ],
+      "responses": [
+        "La primera matricula es gratuita. Si necesitas una segunda matricula o recursar, cada materia cuesta alrededor de USD 60 (total: USD 180)."
+      ]
+    },
+    {
+      "tag": "consultar_evaluacion_nivelacion",
+      "patterns": [
+        "Como se evalua la nivelacion?",
+        "Sistema de calificacion nivelacion UG",
+        "Que necesito para aprobar nivelacion?",
+        "Que porcentaje necesito para pasar?",
+        "Como son los examenes en nivelacion?"
+      ],
+      "responses": [
+        "Cada materia se evalua con dos parciales. Ponderacion: 60 % trabajo practico, 40 % examenes. Para aprobar necesitas nota final minima de 7.0 y al menos 70 % de asistencia por materia."
+      ]
+    },
+    {
+      "tag": "consultar_oferta_academica",
+      "patterns": [
+        "Que carreras ofrece la UG?",
+        "Carreras disponibles en la Universidad de Guayaquil",
+        "Oferta academica actual",
+        "Que puedo estudiar en la UG?",
+        "Opciones de estudio en la UG"
+      ],
+      "responses": [
+        "La UG ofrece carreras en areas como Salud, Educacion, Ingenieria, Artes y mas. Revisa las ofertas completas en https://admision.ug.edu.ec/oferta-ug/"
+      ]
+    },
+    {
+      "tag": "consultar_modalidad_estudio",
+      "patterns": [
+        "La UG tiene carreras en linea?",
+        "Modalidades de estudio en la UG",
+        "Hay carreras virtuales?",
+        "Se puede estudiar a distancia?",
+        "Las clases son presenciales o virtuales?"
+      ],
+      "responses": [
+        "La mayoria de carreras son presenciales, pero algunas se ofertan como carreras virtuales. Consulta por modalidad en https://admision.ug.edu.ec/oferta-ug/"
+      ]
+    },
+    {
+      "tag": "consultar_normativas",
+      "patterns": [
+        "Donde puedo leer el reglamento de admision?",
+        "Normativas del proceso de ingreso",
+        "Que normas rigen el proceso de nivelacion?",
+        "Donde estan las directrices oficiales?",
+        "Hay reglamento para nivelacion?"
+      ],
+      "responses": [
+        "Puedes consultar el reglamento de admision y las directrices de nivelacion en PDF desde https://admision.ug.edu.ec/ en la seccion de documentos normativos."
+      ]
+    },
+    {
+      "tag": "consultar_cupos_aceptacion",
+      "patterns": [
+        "Cuantos cupos hay por carrera?",
+        "Como se si fui aceptado en la UG?",
+        "Donde consulto los resultados de asignacion?",
+        "En que carrera fui asignado?",
+        "Consultar cupos disponibles"
+      ],
+      "responses": [
+        "Los cupos por carrera varian cada semestre. Puedes consultar si fuiste aceptado en el portal oficial https://registroadmision.ug.edu.ec/index.php ingresando tu numero de cedula."
+      ]
+    },
+    {
+      "tag": "consultar_asistencia_minima",
+      "patterns": [
+        "Cuantas faltas se permiten en nivelacion?",
+        "Que pasa si falto muchas veces?",
+        "Reglas de asistencia en nivelacion",
+        "Cual es el minimo de asistencia?",
+        "Porcentaje de asistencia requerido"
+      ],
+      "responses": [
+        "Debes asistir al menos al 70 % de clases por materia. Si faltas mas, podrias reprobar automaticamente."
+      ]
+    }
+  ]
+}
