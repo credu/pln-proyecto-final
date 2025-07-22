@@ -21,7 +21,7 @@ with st.expander("⭐ **Preguntas mas frecuentes**"):
     st.write("- ¿Cuantos cupos hay por carrera?")
     st.write("- ¿Cuantas faltas se permiten en nivelacion?")
 
-with st.expander("⭐ **Integrantes**"):
+with st.expander("✨ **Integrantes**"):
     # Aquí van los elementos que se mostrarán dentro del expansor
     st.write("- Daniel Troya")
     st.write("- Jesus Mendoza")
