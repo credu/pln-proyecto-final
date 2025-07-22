@@ -8,7 +8,7 @@ st.title("Chatbot UG")
 
 with st.expander("⭐ **Preguntas mas frecuentes**"):
     # Aquí van los elementos que se mostrarán dentro del expansor
-    st.write("- ¿Cuales son los requisitos para postular a la UG?",)
+    st.write("- ¿Cuales son los requisitos para postular a la UG?")
     st.write("- ¿Como creo mi cuenta para la admision?")
     st.write("- ¿Cuando comienza el curso de nivelacion?")
     st.write("- ¿Cuanto dura la nivelacion?")
@@ -20,6 +20,13 @@ with st.expander("⭐ **Preguntas mas frecuentes**"):
     st.write("- ¿Donde puedo leer el reglamento de admision?")
     st.write("- ¿Cuantos cupos hay por carrera?")
     st.write("- ¿Cuantas faltas se permiten en nivelacion?")
+
+with st.expander("⭐ **Integrantes**"):
+    # Aquí van los elementos que se mostrarán dentro del expansor
+    st.write("- Daniel Troya")
+    st.write("- Jesus Mendoza")
+    st.write("- Jose Alvarez")
+    st.write("- Justyn Garcia")
 
 # Inicializamos un array para guarda en memoria los mensajes
 # junto a un mensaje inicial
